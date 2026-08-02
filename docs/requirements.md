@@ -274,8 +274,9 @@ Criterios de aceptación:
 - **Rendimiento:** respuesta objetivo menor a 500 ms con hasta 10 000
   movimientos por organización.
 - **Observabilidad:** las acciones sensibles tienen auditoría funcional, los
-  errores usan logs JSON y existe un endpoint de salud. Sigue pendiente conectar
-  el seguimiento externo de errores al elegir la infraestructura.
+  errores usan logs JSON y existe un endpoint de salud. La integración opcional
+  con Sentry permanece inactiva hasta configurar DSN, proyecto y alertas en el
+  entorno definitivo.
 
 ## 6. Fuera del alcance actual
 

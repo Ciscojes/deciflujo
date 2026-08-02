@@ -50,3 +50,6 @@ flujo o barras financieras ascendentes.
 La búsqueda web realizada es preliminar. Antes de publicación comercial deben
 revisarse formalmente marcas, razón social, dominios y usuarios sociales en los
 mercados donde se ofrecerá el producto.
+
+El alcance y los resultados preliminares están documentados en
+[brand-clearance.md](brand-clearance.md).

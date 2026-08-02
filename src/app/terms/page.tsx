@@ -24,6 +24,24 @@ export default function TermsPage() {
           como acuerdo definitivo sin identidad jurídica y revisión profesional.
         </p>
       </section>
+      <section>
+        <h2 className="font-semibold text-[#293648]">Cuenta y autorización</h2>
+        <p className="mt-2">
+          La persona administradora de cada empresa controla invitaciones y
+          permisos. Quien registra información declara contar con autorización
+          para hacerlo y debe comunicar de inmediato cualquier acceso no
+          reconocido.
+        </p>
+      </section>
+      <section>
+        <h2 className="font-semibold text-[#293648]">Exportación y terminación</h2>
+        <p className="mt-2">
+          Se definirá un período razonable para exportar información y un proceso
+          verificable de cierre y eliminación. Los plazos de respaldo,
+          conservación legal y resolución de disputas requieren revisión
+          profesional antes del lanzamiento.
+        </p>
+      </section>
     </DocumentLayout>
   );
 }

@@ -4,6 +4,7 @@ export const auditActions = [
   "transaction.deleted",
   "decision.created",
   "decision.reviewed",
+  "decision.auto_reviewed",
   "demo_data.deleted",
   "invitation.created",
   "invitation.accepted",

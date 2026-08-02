@@ -116,7 +116,7 @@ export class LibsqlDecisionRepository implements DecisionRepository {
           actual_balance_cents = ?,
           variance_cents = ? - projected_final_balance_cents,
           reviewed_at = ?
-        WHERE id = ? AND organization_id = ?
+        WHERE id = ? AND organization_id = ? AND status = 'planned'
       `,
       args: [
         actualBalanceCents,

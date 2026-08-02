@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { ZodError } from "zod";
 import { createDecision } from "@/modules/finance/application/use-cases/create-decision";
 import { listDecisions } from "@/modules/finance/application/use-cases/list-decisions";
+import { reviewDueDecisions } from "@/modules/finance/application/use-cases/review-due-decisions";
 import { LibsqlAccountRepository } from "@/modules/finance/infrastructure/libsql-account-repository";
 import { LibsqlDecisionRepository } from "@/modules/finance/infrastructure/libsql-decision-repository";
 import { LibsqlTransactionRepository } from "@/modules/finance/infrastructure/libsql-transaction-repository";
@@ -20,8 +21,37 @@ export async function GET(request: Request) {
   const decisionRepository = new LibsqlDecisionRepository(
     authResult.context.organizationId,
   );
-  const decisions = await listDecisions(decisionRepository);
-  return NextResponse.json({ data: decisions });
+  const accountRepository = new LibsqlAccountRepository(
+    authResult.context.organizationId,
+  );
+
+  try {
+    const automaticallyReviewed = await reviewDueDecisions(
+      decisionRepository,
+      accountRepository,
+    );
+    for (const decision of automaticallyReviewed) {
+      await recordAuditEvent(authResult.context, {
+        action: "decision.auto_reviewed",
+        entityType: "decision",
+        entityId: decision.id,
+        summary: `Deciflujo evaluó automáticamente “${decision.title}”.`,
+        metadata: {
+          actualBalanceCents: decision.actualBalanceCents,
+          varianceCents: decision.varianceCents,
+          trigger: "target_date_reached",
+        },
+      });
+    }
+    const decisions = await listDecisions(decisionRepository);
+    return NextResponse.json({ data: decisions });
+  } catch (error) {
+    logError("api.decision_list_failed", error);
+    return NextResponse.json(
+      { error: "No fue posible cargar las decisiones." },
+      { status: 500 },
+    );
+  }
 }
 
 export async function POST(request: Request) {

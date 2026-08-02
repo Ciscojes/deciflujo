@@ -1,5 +1,7 @@
 import "server-only";
 
+import * as Sentry from "@sentry/nextjs";
+
 type LogContext = Record<string, string | number | boolean | null | undefined>;
 
 function serializeError(error: unknown) {
@@ -43,4 +45,7 @@ export function logError(
   context: LogContext = {},
 ) {
   write("error", event, context, error);
+  if (process.env.NODE_ENV === "production" && process.env.SENTRY_DSN) {
+    Sentry.captureException(error, { tags: { event } });
+  }
 }

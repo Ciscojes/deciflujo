@@ -38,6 +38,7 @@ vertical funcional.
 - Pulso financiero explicable basado en flujo, cobertura y proporción de gastos.
 - Simulador de gastos mensuales con comparación visual de escenarios.
 - Bitácora persistente de decisiones con comparación esperado/real.
+- Evaluación automática de decisiones al consultar la bitácora después de su fecha objetivo.
 - Resumen de saldo, ingresos, egresos y margen operativo.
 - Distribución de gastos por categoría.
 - Búsqueda de movimientos.
@@ -46,6 +47,7 @@ vertical funcional.
 - Pruebas unitarias del cálculo financiero.
 - Pruebas E2E en Chromium para SQLite y PostgreSQL mediante CI.
 - Endpoint de salud, encabezados defensivos y logs JSON estructurados.
+- Seguimiento opcional de errores mediante Sentry, inactivo sin credenciales.
 - Respaldo, restauración e importación SQLite→PostgreSQL con confirmaciones.
 
 ## Inicio rápido
@@ -98,12 +100,14 @@ una importación separada.
 npm run dev       # desarrollo
 npm run test      # pruebas unitarias
 npm run test:e2e  # recorrido crítico en Chromium
+npm run test:e2e:deps # dependencias Chromium locales sin modificar el sistema
 npm run lint      # análisis estático
 npm run typecheck # comprobación de tipos
 npm run db:auth:migrate # tablas de identidad en la base configurada
 npm run db:backup # respaldo PostgreSQL verificado
 npm run db:restore -- respaldo.dump # restauración con confirmación
 npm run db:import-sqlite # importación controlada a PostgreSQL
+npm run check:production-env # valida configuración sin mostrar secretos
 npm run build     # compilación de producción
 ```
 
@@ -146,6 +150,9 @@ Esto permite cambiar SQLite por PostgreSQL sin reescribir reglas de negocio.
 - [Lección 15: preparación operativa](docs/learning/15-preparacion-operativa.md)
 - [Manual de operación](docs/operations/runbook.md)
 - [Checklist previo al despliegue](docs/operations/pre-deployment-checklist.md)
+- [Preparación para despliegue futuro](docs/operations/deployment-readiness.md)
+- [Revisión preliminar del nombre](docs/brand-clearance.md)
+- [Revisión interna de seguridad](docs/security/internal-review-2026-08-02.md)
 - [ADR-001: monolito modular](docs/architecture/decisions/001-monolito-modular.md)
 - [ADR-002: SQLite en el MVP](docs/architecture/decisions/002-sqlite-mvp.md)
 - [ADR-011: persistencia dual SQLite/PostgreSQL](docs/architecture/decisions/011-persistencia-dual-postgresql.md)
@@ -166,9 +173,9 @@ docs/
 
 ## Próximos incrementos
 
-1. Comparación automática cuando llegue la fecha objetivo.
-2. Integración con un servicio externo de seguimiento de errores.
-3. Revisión legal y de seguridad independiente antes de aceptar datos reales.
+1. Prueba de carga con 10 000 movimientos por empresa.
+2. Revisión legal y de seguridad independiente antes de aceptar datos reales.
+3. Activación y ensayo de alertas cuando se elijan proveedores y dominio.
 
 ## Decisiones monetarias
 

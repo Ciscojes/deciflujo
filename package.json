@@ -12,12 +12,15 @@
     "db:backup": "bash scripts/db/backup-postgres.sh",
     "db:restore": "bash scripts/db/restore-postgres.sh",
     "db:import-sqlite": "node scripts/db/import-sqlite-to-postgres.mjs",
+    "check:production-env": "node scripts/validate-production-env.mjs",
     "test": "vitest run src",
     "test:watch": "vitest src",
-    "test:e2e": "playwright test"
+    "test:e2e": "LD_LIBRARY_PATH=${LD_LIBRARY_PATH:+$LD_LIBRARY_PATH:}$PWD/.playwright-deps/usr/lib/x86_64-linux-gnu playwright test",
+    "test:e2e:deps": "bash scripts/testing/install-playwright-libs.sh"
   },
   "dependencies": {
     "@libsql/client": "^0.17.4",
+    "@sentry/nextjs": "^10.69.0",
     "better-auth": "^1.6.25",
     "lucide-react": "^1.27.0",
     "next": "16.2.12",

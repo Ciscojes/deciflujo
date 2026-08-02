@@ -729,8 +729,8 @@ function DecisionJournalRow({
 
       {!reviewed && (
         <p className="mt-3 text-[11px] text-[#8d98a8]">
-          Si evalúas antes de la fecha objetivo, el resultado se marcará como
-          comparación anticipada.
+          Deciflujo registrará la comparación automáticamente al llegar la fecha
+          objetivo. También puedes evaluarla antes de tiempo.
         </p>
       )}
     </div>

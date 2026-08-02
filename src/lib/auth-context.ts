@@ -10,6 +10,7 @@ import {
   type DeciflujoResource,
   hasDeciflujoPermission,
 } from "@/lib/access-control";
+import { hasTrustedMutationOrigin } from "@/lib/request-origin";
 
 type AuthContext = {
   organizationId: string;
@@ -26,6 +27,16 @@ export async function getAuthContext(
   request: Request,
   permission?: { resource: DeciflujoResource; action: DeciflujoAction },
 ): Promise<AuthContextResult> {
+  if (!hasTrustedMutationOrigin(request)) {
+    return {
+      ok: false,
+      response: NextResponse.json(
+        { error: "El origen de la solicitud no es válido." },
+        { status: 403 },
+      ),
+    };
+  }
+
   const session = await auth.api.getSession({ headers: request.headers });
 
   if (!session) {

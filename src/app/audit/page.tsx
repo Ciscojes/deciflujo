@@ -25,6 +25,7 @@ const actionLabels: Record<AuditAction, string> = {
   "transaction.deleted": "Movimiento eliminado",
   "decision.created": "Decisión guardada",
   "decision.reviewed": "Decisión evaluada",
+  "decision.auto_reviewed": "Decisión evaluada automáticamente",
   "demo_data.deleted": "Datos demo retirados",
   "invitation.created": "Invitación creada",
   "invitation.accepted": "Invitación aceptada",
