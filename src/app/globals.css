@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f7f8fa;
+  --foreground: #18212f;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.form-control {
+  width: 100%;
+  border: 1px solid #d5dde8;
+  border-radius: 0.625rem;
+  background: #fbfcfe;
+  padding: 0.7rem 0.8rem;
+  color: #283444;
+  outline: none;
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.form-control:focus {
+  border-color: #7399c8;
+  box-shadow: 0 0 0 3px #e2ebf7;
+}
+
+::selection {
+  background: #d6e5f5;
+  color: #183153;
+}

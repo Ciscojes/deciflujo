@@ -1,0 +1,48 @@
+{
+  "name": "deciflujo",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "db:auth:migrate": "npx --yes @better-auth/cli@1.4.21 migrate --yes --config better-auth.config.ts",
+    "db:backup": "bash scripts/db/backup-postgres.sh",
+    "db:restore": "bash scripts/db/restore-postgres.sh",
+    "db:import-sqlite": "node scripts/db/import-sqlite-to-postgres.mjs",
+    "test": "vitest run src",
+    "test:watch": "vitest src",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "@libsql/client": "^0.17.4",
+    "better-auth": "^1.6.25",
+    "lucide-react": "^1.27.0",
+    "next": "16.2.12",
+    "pg": "^8.22.0",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "server-only": "^0.0.1",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.62.1",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^22.20.1",
+    "@types/pg": "^8.20.2",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@vitest/coverage-v8": "^4.1.10",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.12",
+    "tailwindcss": "^4",
+    "typescript": "^5",
+    "vitest": "^4.1.10"
+  },
+  "overrides": {
+    "postcss": "^8.5.18",
+    "sharp": "^0.35.0"
+  }
+}

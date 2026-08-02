@@ -1,0 +1,115 @@
+<!doctype html>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Deciflujo — Arquitectura C4</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #f8fafc;
+    --fg: #172033;
+    --muted: #5b6475;
+    --line: #64748b;
+    --neutral: #e2e8f0;
+    --input: #bfdbfe;
+    --process: #c7d2fe;
+    --storage: #99f6e4;
+    --external: #fde68a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f172a;
+      --fg: #e5e7eb;
+      --muted: #a3adbd;
+      --line: #94a3b8;
+      --neutral: #334155;
+      --input: #1d4ed8;
+      --process: #4338ca;
+      --storage: #0f766e;
+      --external: #92400e;
+    }
+  }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font: 14px/1.4 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+      "Segoe UI", sans-serif;
+  }
+  main { max-width: 1120px; margin: 32px auto; padding: 0 20px; }
+  svg { width: 100%; height: auto; display: block; }
+  .title { font-size: 22px; font-weight: 700; fill: var(--fg); }
+  .subtitle { font-size: 13px; fill: var(--muted); }
+  .label { font-size: 14px; font-weight: 650; fill: var(--fg); }
+  .small { font-size: 12px; fill: var(--muted); }
+  .node { stroke: var(--line); stroke-width: 1; }
+  .neutral { fill: var(--neutral); }
+  .input { fill: var(--input); }
+  .process { fill: var(--process); }
+  .storage { fill: var(--storage); }
+  .external { fill: var(--external); }
+  .edge { stroke: var(--line); stroke-width: 1.5; fill: none; }
+  .zone { fill: none; stroke: var(--line); stroke-width: 1; stroke-dasharray: 6 5; opacity: 0.8; }
+</style>
+<main>
+  <svg viewBox="0 0 1080 600" role="img" aria-labelledby="title desc">
+    <title id="title">Arquitectura de contenedores de Deciflujo</title>
+    <desc id="desc">Flujo desde el usuario hasta la interfaz, API, aplicación, dominio y almacenamiento local.</desc>
+    <defs>
+      <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+        <path d="M0,0 L0,6 L9,3 z" fill="var(--line)" />
+      </marker>
+    </defs>
+
+    <text x="30" y="38" class="title">Deciflujo — vista de contenedores y capas</text>
+    <text x="30" y="61" class="subtitle">Monolito modular con puertos y adaptadores</text>
+
+    <rect x="210" y="85" width="835" height="430" rx="18" class="zone" />
+    <text x="232" y="112" class="small">Límite de la aplicación Next.js</text>
+
+    <!-- Connectors are intentionally drawn before nodes. -->
+    <path d="M165 285 H245" class="edge" marker-end="url(#arrow)" />
+    <path d="M405 285 H465" class="edge" marker-end="url(#arrow)" />
+    <path d="M625 285 H685" class="edge" marker-end="url(#arrow)" />
+    <path d="M845 285 H900" class="edge" marker-end="url(#arrow)" />
+    <path d="M765 342 V405" class="edge" marker-end="url(#arrow)" />
+    <path d="M980 342 V430 H860" class="edge" marker-end="url(#arrow)" />
+
+    <rect x="30" y="230" width="135" height="110" rx="14" class="node external" />
+    <text x="97" y="267" text-anchor="middle" class="label">Administrador</text>
+    <text x="97" y="290" text-anchor="middle" class="small">Opera la pyme</text>
+    <text x="97" y="309" text-anchor="middle" class="small">desde navegador</text>
+
+    <rect x="245" y="220" width="160" height="130" rx="14" class="node input" />
+    <text x="325" y="258" text-anchor="middle" class="label">Presentación</text>
+    <text x="325" y="283" text-anchor="middle" class="small">React dashboard</text>
+    <text x="325" y="302" text-anchor="middle" class="small">+ Route Handlers</text>
+    <text x="325" y="321" text-anchor="middle" class="small">HTTP / JSON</text>
+
+    <rect x="465" y="220" width="160" height="130" rx="14" class="node process" />
+    <text x="545" y="258" text-anchor="middle" class="label">Aplicación</text>
+    <text x="545" y="283" text-anchor="middle" class="small">Casos de uso</text>
+    <text x="545" y="302" text-anchor="middle" class="small">Validación</text>
+    <text x="545" y="321" text-anchor="middle" class="small">Puertos</text>
+
+    <rect x="685" y="220" width="160" height="130" rx="14" class="node process" />
+    <text x="765" y="258" text-anchor="middle" class="label">Dominio</text>
+    <text x="765" y="283" text-anchor="middle" class="small">Transaction</text>
+    <text x="765" y="302" text-anchor="middle" class="small">Invariantes</text>
+    <text x="765" y="321" text-anchor="middle" class="small">Cálculos financieros</text>
+
+    <rect x="900" y="220" width="130" height="130" rx="14" class="node neutral" />
+    <text x="965" y="258" text-anchor="middle" class="label">Adaptador</text>
+    <text x="965" y="283" text-anchor="middle" class="small">Repositorio</text>
+    <text x="965" y="302" text-anchor="middle" class="small">libSQL</text>
+
+    <rect x="685" y="405" width="160" height="90" rx="14" class="node neutral" />
+    <text x="765" y="440" text-anchor="middle" class="label">Puerto</text>
+    <text x="765" y="466" text-anchor="middle" class="small">TransactionRepository</text>
+
+    <rect x="900" y="405" width="130" height="90" rx="14" class="node storage" />
+    <text x="965" y="440" text-anchor="middle" class="label">SQLite</text>
+    <text x="965" y="466" text-anchor="middle" class="small">MVP local</text>
+
+    <text x="30" y="560" class="small">Regla principal: las dependencias apuntan hacia el dominio; la base de datos es reemplazable.</text>
+  </svg>
+</main>
