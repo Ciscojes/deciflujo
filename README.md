@@ -108,69 +108,6 @@ usuarios, organizaciones y movimientos permanezcan en la misma base. Este paso
 crea una instalación nueva; copiar datos del archivo SQLite existente requiere
 una importación separada.
 
-## Comandos
-
-```bash
-npm run dev       # desarrollo
-npm run test      # pruebas unitarias
-npm run test:e2e  # recorrido crítico en Chromium
-npm run test:e2e:deps # dependencias Chromium locales sin modificar el sistema
-npm run lint      # análisis estático
-npm run typecheck # comprobación de tipos
-npm run db:auth:migrate # tablas de identidad en la base configurada
-npm run db:backup # respaldo PostgreSQL verificado
-npm run db:restore -- respaldo.dump # restauración con confirmación
-npm run db:import-sqlite # importación controlada a PostgreSQL
-npm run check:production-env # valida configuración sin mostrar secretos
-npm run build     # compilación de producción
-```
-
-## Arquitectura
-
-Se utiliza un **monolito modular** con una adaptación práctica de arquitectura
-hexagonal:
-
-```text
-Presentación (Next.js / React)
-             ↓
-Aplicación (casos de uso + puertos)
-             ↓
-Dominio (reglas y modelos)
-             ↑
-Infraestructura (repositorio libSQL)
-```
-
-El dominio no conoce HTTP, React ni la base de datos. La aplicación depende de
-la interfaz `TransactionRepository`; la infraestructura implementa ese puerto.
-Esto permite cambiar SQLite por PostgreSQL sin reescribir reglas de negocio.
-
-- [Documento de arquitectura](docs/architecture/architecture.md)
-- [Identidad de producto](docs/brand.md)
-- [Diagrama C4 interactivo](docs/architecture/c4-container.html)
-- [Requisitos del producto](docs/requirements.md)
-- [Lección 02: eliminar un movimiento](docs/learning/02-eliminar-movimiento.md)
-- [Lección 03: relacionar cuentas y movimientos](docs/learning/03-cuentas-y-relaciones.md)
-- [Lección 04: motor de decisiones](docs/learning/04-motor-de-decisiones.md)
-- [Lección 05: bitácora y fotografías financieras](docs/learning/05-bitacora-de-decisiones.md)
-- [Lección 06: autenticación y multiempresa](docs/learning/06-autenticacion-y-multiempresa.md)
-- [Lección 07: roles y permisos](docs/learning/07-roles-y-permisos.md)
-- [Lección 08: auditoría append-only](docs/learning/08-auditoria-append-only.md)
-- [Lección 09: liquidación atómica de cuentas pendientes](docs/learning/09-cuentas-por-cobrar-pagar.md)
-- [Lección 10: presupuestos contra ejecución real](docs/learning/10-presupuestos-mensuales.md)
-- [Lección 11: reportes y exportación segura](docs/learning/11-reportes-y-exportacion.md)
-- [Lección 12: tendencias y cierres mensuales](docs/learning/12-tendencias-y-cierres.md)
-- [Lección 13: correos y recuperación de contraseña](docs/learning/13-correos-y-recuperacion.md)
-- [Lección 14: PostgreSQL para producción](docs/learning/14-postgresql-para-produccion.md)
-- [Lección 15: preparación operativa](docs/learning/15-preparacion-operativa.md)
-- [Manual de operación](docs/operations/runbook.md)
-- [Checklist previo al despliegue](docs/operations/pre-deployment-checklist.md)
-- [Preparación para despliegue futuro](docs/operations/deployment-readiness.md)
-- [Revisión preliminar del nombre](docs/brand-clearance.md)
-- [Revisión interna de seguridad](docs/security/internal-review-2026-08-02.md)
-- [ADR-001: monolito modular](docs/architecture/decisions/001-monolito-modular.md)
-- [ADR-002: SQLite en el MVP](docs/architecture/decisions/002-sqlite-mvp.md)
-- [ADR-011: persistencia dual SQLite/PostgreSQL](docs/architecture/decisions/011-persistencia-dual-postgresql.md)
-
 ## Estructura
 
 ```text
