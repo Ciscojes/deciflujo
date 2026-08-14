@@ -9,18 +9,34 @@ vertical funcional.
 
 ## Funcionalidad disponible
 
+### Finanzas y operación diaria
+
 - Dashboard financiero responsive.
+- Resumen de saldo, ingresos, egresos y margen operativo.
+- Registro persistente de ingresos y egresos.
+- Eliminación con confirmación de movimientos.
+- Búsqueda de movimientos.
+- Cuentas bancarias, efectivo y tarjetas con saldos independientes.
+- Asociación obligatoria entre cada movimiento y una cuenta.
+- Cuentas por cobrar y pagar con vencimientos, estados y totales abiertos.
+- Registro atómico del pago y su movimiento financiero asociado.
+- Datos de demostración creados al iniciar por primera vez.
+- Datos de demostración identificados y retirables desde el dashboard.
+- Guía interactiva de primeros pasos para usuarios de negocio.
+
+### Usuarios, equipos y empresas
+
 - Registro e inicio de sesión con contraseñas protegidas por Better Auth.
 - Recuperación de contraseña mediante enlace de un solo uso enviado por Resend.
-- Persistencia seleccionable: SQLite local y PostgreSQL para despliegue.
-- Invitaciones de equipo enviadas por correo y copiables manualmente.
 - Espacios multiempresa con datos financieros aislados por organización.
 - Selector de empresa y cierre de sesión.
 - Equipo con invitaciones mediante enlaces y cuatro roles operativos.
+- Invitaciones de equipo enviadas por correo y copiables manualmente.
 - Historial de auditoría por empresa para acciones financieras e invitaciones.
 - Cambios de rol y bajas de miembros registrados en auditoría.
-- Cuentas por cobrar y pagar con vencimientos, estados y totales abiertos.
-- Registro atómico del pago y su movimiento financiero asociado.
+
+### Planificación, análisis y decisiones
+
 - Presupuestos mensuales por categoría comparados con egresos reales.
 - Alertas visuales al alcanzar el 80% o superar un límite presupuestario.
 - Reportes por período con filtros de cuenta, categoría y tipo.
@@ -28,27 +44,25 @@ vertical funcional.
 - Tendencias comparativas de ingresos, egresos y flujo para 6, 12 o 24 meses.
 - Cierres mensuales con fotografía de saldos, presupuesto y responsable.
 - Bloqueo de movimientos en períodos cerrados y reapertura auditada.
-- Datos de demostración identificados y retirables desde el dashboard.
-- Registro persistente de ingresos y egresos.
-- Eliminación con confirmación de movimientos.
-- Guía interactiva de primeros pasos para usuarios de negocio.
-- Cuentas bancarias, efectivo y tarjetas con saldos independientes.
-- Asociación obligatoria entre cada movimiento y una cuenta.
-- Migraciones versionadas que preservan datos existentes.
 - Pulso financiero explicable basado en flujo, cobertura y proporción de gastos.
 - Simulador de gastos mensuales con comparación visual de escenarios.
 - Bitácora persistente de decisiones con comparación esperado/real.
 - Evaluación automática de decisiones al consultar la bitácora después de su fecha objetivo.
-- Resumen de saldo, ingresos, egresos y margen operativo.
 - Distribución de gastos por categoría.
-- Búsqueda de movimientos.
-- Datos de demostración creados al iniciar por primera vez.
+
+### Datos y despliegue
+
+- Persistencia seleccionable: SQLite local y PostgreSQL para despliegue.
+- Migraciones versionadas que preservan datos existentes.
+- Respaldo, restauración e importación SQLite→PostgreSQL con confirmaciones.
+
+### Seguridad, calidad y operaciones
+
 - Validación en la frontera HTTP y reglas en el dominio.
 - Pruebas unitarias del cálculo financiero.
 - Pruebas E2E en Chromium para SQLite y PostgreSQL mediante CI.
 - Endpoint de salud, encabezados defensivos y logs JSON estructurados.
 - Seguimiento opcional de errores mediante Sentry, inactivo sin credenciales.
-- Respaldo, restauración e importación SQLite→PostgreSQL con confirmaciones.
 
 ## Inicio rápido
 
