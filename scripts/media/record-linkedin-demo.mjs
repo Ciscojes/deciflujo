@@ -228,6 +228,9 @@ try {
     storageState,
   });
   page = await context.newPage();
+  // Chromium can briefly start video capture with its 480x600 fallback viewport.
+  // Reassert the intended vertical canvas before rendering the opening title.
+  await page.setViewportSize({ width: 1080, height: 1350 });
   recordedVideo = page.video();
 
   await showTitle("Deciflujo", "Entiende tus números. Decide con claridad.");
