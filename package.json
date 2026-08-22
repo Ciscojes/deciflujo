@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "next typegen && tsc --noEmit",
     "db:auth:migrate": "npx --yes @better-auth/cli@1.4.21 migrate --yes --config better-auth.config.ts",
     "db:backup": "bash scripts/db/backup-postgres.sh",
     "db:restore": "bash scripts/db/restore-postgres.sh",
