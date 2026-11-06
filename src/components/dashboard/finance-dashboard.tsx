@@ -778,29 +778,25 @@ export function FinanceDashboard({
               title="Saldo disponible"
               value={formatMoney(summary.balanceCents)}
               note="Ingresos menos egresos"
-              icon={WalletCards}
-              tone="forest"
+
             />
             <MetricCard
               title="Ingresos"
               value={formatMoney(summary.incomeCents)}
               note="Movimientos registrados"
-              icon={TrendingUp}
-              tone="green"
+
             />
             <MetricCard
               title="Egresos"
               value={formatMoney(summary.expenseCents)}
               note="Gastos del período"
-              icon={TrendingDown}
-              tone="clay"
+
             />
             <MetricCard
               title="Margen operativo"
               value={`${summary.operatingMargin.toFixed(1)}%`}
               note="Meta recomendada: 20%"
-              icon={ArrowUpRight}
-              tone="blue"
+
             />
           </section>
 
@@ -1614,36 +1610,18 @@ function MetricCard({
   title,
   value,
   note,
-  icon: Icon,
-  tone,
 }: {
   title: string;
   value: string;
   note: string;
-  icon: typeof WalletCards;
-  tone: "forest" | "green" | "clay" | "blue";
 }) {
-  const toneClasses = {
-    forest: "bg-[#e8f0f9] text-[#2c568e]",
-    green: "bg-[#e8eff7] text-[#2c7652]",
-    clay: "bg-[#f7ebe5] text-[#ad6749]",
-    blue: "bg-[#e8eef0] text-[#476c75]",
-  };
-
   return (
-    <article className="rounded-2xl border border-[#dce3ec] bg-white p-5 shadow-[0_1px_2px_rgba(20,38,27,0.03)]">
-      <div className="flex items-start justify-between">
-        <p className="text-sm text-[#707c74]">{title}</p>
-        <span
-          className={`grid size-9 place-items-center rounded-xl ${toneClasses[tone]}`}
-        >
-          <Icon size={18} />
-        </span>
-      </div>
-      <p className="mt-4 truncate text-2xl font-semibold tracking-[-0.04em]">
+    <article className="rounded-lg border border-[#dce3ec] bg-white p-5">
+      <p className="text-sm text-[#707c74]">{title}</p>
+      <p className="mt-3 truncate text-2xl font-semibold tracking-[-0.03em] text-[#183153]">
         {value}
       </p>
-      <p className="mt-2 text-xs text-[#8a95a5]">{note}</p>
+      <p className="mt-2 text-xs text-[#667386]">{note}</p>
     </article>
   );
 }
