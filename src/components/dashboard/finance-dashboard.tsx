@@ -778,25 +778,21 @@ export function FinanceDashboard({
               title="Saldo disponible"
               value={formatMoney(summary.balanceCents)}
               note="Ingresos menos egresos"
-
             />
             <MetricCard
               title="Ingresos"
               value={formatMoney(summary.incomeCents)}
               note="Movimientos registrados"
-
             />
             <MetricCard
               title="Egresos"
               value={formatMoney(summary.expenseCents)}
               note="Gastos del período"
-
             />
             <MetricCard
               title="Margen operativo"
               value={`${summary.operatingMargin.toFixed(1)}%`}
               note="Meta recomendada: 20%"
-
             />
           </section>
 
