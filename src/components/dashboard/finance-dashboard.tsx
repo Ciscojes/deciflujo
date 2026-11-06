@@ -27,7 +27,6 @@ import {
   Settings,
   ShieldCheck,
   Trash2,
-  TrendingDown,
   TrendingUp,
   Users,
   WalletCards,
@@ -673,7 +672,7 @@ export function FinanceDashboard({
       )}
 
       <main className="lg:pl-[248px]">
-        <header className="sticky top-0 z-20 flex h-[72px] items-center justify-between border-b border-[#dce3ec] bg-[#f8fafc]/90 px-5 backdrop-blur-md sm:px-8">
+        <header className="sticky top-0 z-20 flex min-h-[72px] flex-wrap items-center justify-between gap-3 border-b border-[#dce3ec] bg-[#f8fafc]/90 px-5 py-3 backdrop-blur-md sm:h-[72px] sm:flex-nowrap sm:px-8 sm:py-0">
           <div className="flex items-center gap-3">
             <button
               className="rounded-lg border border-[#dce3ec] bg-white p-2 text-[#536172] lg:hidden"
@@ -696,7 +695,7 @@ export function FinanceDashboard({
                   setTourStep(0);
                   setTourOpen(true);
                 }}
-                className="flex items-center gap-2 rounded-lg border border-[#dce3ec] bg-white px-3 py-2.5 text-sm font-medium text-[#536172] transition hover:border-[#b6c6da] hover:bg-[#f2f6f3]"
+                className="relative flex items-center gap-2 rounded-lg border border-[#dce3ec] bg-white px-3 py-2.5 text-sm font-medium text-[#536172] transition hover:border-[#b6c6da] hover:bg-[#f2f6f3]"
               >
                 <BookOpen size={17} />
                 <span className="hidden md:inline">Primeros pasos</span>
@@ -953,7 +952,7 @@ export function FinanceDashboard({
                       <th className="px-4 py-3.5">Categoría</th>
                       <th className="px-4 py-3.5">Fecha</th>
                       <th className="px-6 py-3.5 text-right">Monto</th>
-                      <th className="w-16 px-4 py-3.5">
+                      <th className="relative w-16 px-4 py-3.5">
                         <span className="sr-only">Acciones</span>
                       </th>
                     </tr>

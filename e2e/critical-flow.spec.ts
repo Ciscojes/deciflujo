@@ -39,12 +39,24 @@ test("registro, empresa y movimiento financiero", async ({ page }) => {
     .click();
   await expect(page.getByRole("button", { name: "Primeros pasos" })).toBeVisible();
 
+  await page.getByRole("button", { name: "Nueva cuenta", exact: true }).click();
+  await page.getByLabel("Nombre de la cuenta").fill("Banco E2E");
+  await page.getByRole("button", { name: "Crear cuenta", exact: true }).click();
+  await expect(page.getByRole("button", { name: "Nuevo movimiento" })).toBeEnabled();
   await page.getByRole("button", { name: "Nuevo movimiento" }).click();
   await page.getByLabel("Descripción").fill("Venta comprobada por E2E");
   await page.getByLabel("Monto (₡)").fill("125000");
   await page.getByRole("button", { name: "Guardar movimiento" }).click();
 
   await expect(page.getByText("Venta comprobada por E2E")).toBeVisible();
+
+  for (const width of [390, 320]) {
+    await page.setViewportSize({ width, height: 900 });
+    await expect(page.getByText("Venta comprobada por E2E")).toBeVisible();
+    expect(
+      await page.evaluate(() => document.documentElement.scrollWidth),
+    ).toBeLessThanOrEqual(width);
+  }
 });
 
 test("salud de aplicación y encabezados de seguridad", async ({ request }) => {
