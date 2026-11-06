@@ -45,6 +45,13 @@ Cada conclusión debe poder explicar sus datos, fórmula y supuestos.
 El futuro símbolo puede formar una letra **D** mediante una ruta, líneas de
 flujo o barras financieras ascendentes.
 
+## Criterios de interfaz
+
+- Los indicadores financieros priorizan cifras, unidades, períodos y variaciones sobre iconos decorativos.
+- Los iconos se reservan para navegación y acciones reconocibles; los avisos requieren etiquetas textuales.
+- Tarjetas y paneles utilizan bordes consistentes y una jerarquía tipográfica clara, sin sombras por defecto.
+- Las interfaces de datos deben permitir comparación visual, lectura con teclado y diseño adaptable.
+
 ## Validación pendiente
 
 La búsqueda web realizada es preliminar. Antes de publicación comercial deben

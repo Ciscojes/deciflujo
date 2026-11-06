@@ -27,7 +27,6 @@ import {
   Settings,
   ShieldCheck,
   Trash2,
-  TrendingDown,
   TrendingUp,
   Users,
   WalletCards,
@@ -673,7 +672,7 @@ export function FinanceDashboard({
       )}
 
       <main className="lg:pl-[248px]">
-        <header className="sticky top-0 z-20 flex h-[72px] items-center justify-between border-b border-[#dce3ec] bg-[#f8fafc]/90 px-5 backdrop-blur-md sm:px-8">
+        <header className="sticky top-0 z-20 flex min-h-[72px] flex-wrap items-center justify-between gap-3 border-b border-[#dce3ec] bg-[#f8fafc]/90 px-5 py-3 backdrop-blur-md sm:h-[72px] sm:flex-nowrap sm:px-8 sm:py-0">
           <div className="flex items-center gap-3">
             <button
               className="rounded-lg border border-[#dce3ec] bg-white p-2 text-[#536172] lg:hidden"
@@ -696,7 +695,7 @@ export function FinanceDashboard({
                   setTourStep(0);
                   setTourOpen(true);
                 }}
-                className="flex items-center gap-2 rounded-lg border border-[#dce3ec] bg-white px-3 py-2.5 text-sm font-medium text-[#536172] transition hover:border-[#b6c6da] hover:bg-[#f2f6f3]"
+                className="relative flex items-center gap-2 rounded-lg border border-[#dce3ec] bg-white px-3 py-2.5 text-sm font-medium text-[#536172] transition hover:border-[#b6c6da] hover:bg-[#f2f6f3]"
               >
                 <BookOpen size={17} />
                 <span className="hidden md:inline">Primeros pasos</span>
@@ -778,29 +777,21 @@ export function FinanceDashboard({
               title="Saldo disponible"
               value={formatMoney(summary.balanceCents)}
               note="Ingresos menos egresos"
-              icon={WalletCards}
-              tone="forest"
             />
             <MetricCard
               title="Ingresos"
               value={formatMoney(summary.incomeCents)}
               note="Movimientos registrados"
-              icon={TrendingUp}
-              tone="green"
             />
             <MetricCard
               title="Egresos"
               value={formatMoney(summary.expenseCents)}
               note="Gastos del período"
-              icon={TrendingDown}
-              tone="clay"
             />
             <MetricCard
               title="Margen operativo"
               value={`${summary.operatingMargin.toFixed(1)}%`}
               note="Meta recomendada: 20%"
-              icon={ArrowUpRight}
-              tone="blue"
             />
           </section>
 
@@ -961,7 +952,7 @@ export function FinanceDashboard({
                       <th className="px-4 py-3.5">Categoría</th>
                       <th className="px-4 py-3.5">Fecha</th>
                       <th className="px-6 py-3.5 text-right">Monto</th>
-                      <th className="w-16 px-4 py-3.5">
+                      <th className="relative w-16 px-4 py-3.5">
                         <span className="sr-only">Acciones</span>
                       </th>
                     </tr>
@@ -1614,36 +1605,18 @@ function MetricCard({
   title,
   value,
   note,
-  icon: Icon,
-  tone,
 }: {
   title: string;
   value: string;
   note: string;
-  icon: typeof WalletCards;
-  tone: "forest" | "green" | "clay" | "blue";
 }) {
-  const toneClasses = {
-    forest: "bg-[#e8f0f9] text-[#2c568e]",
-    green: "bg-[#e8eff7] text-[#2c7652]",
-    clay: "bg-[#f7ebe5] text-[#ad6749]",
-    blue: "bg-[#e8eef0] text-[#476c75]",
-  };
-
   return (
-    <article className="rounded-2xl border border-[#dce3ec] bg-white p-5 shadow-[0_1px_2px_rgba(20,38,27,0.03)]">
-      <div className="flex items-start justify-between">
-        <p className="text-sm text-[#707c74]">{title}</p>
-        <span
-          className={`grid size-9 place-items-center rounded-xl ${toneClasses[tone]}`}
-        >
-          <Icon size={18} />
-        </span>
-      </div>
-      <p className="mt-4 truncate text-2xl font-semibold tracking-[-0.04em]">
+    <article className="rounded-lg border border-[#dce3ec] bg-white p-5">
+      <p className="text-sm text-[#707c74]">{title}</p>
+      <p className="mt-3 truncate text-2xl font-semibold tracking-[-0.03em] text-[#183153]">
         {value}
       </p>
-      <p className="mt-2 text-xs text-[#8a95a5]">{note}</p>
+      <p className="mt-2 text-xs text-[#667386]">{note}</p>
     </article>
   );
 }
